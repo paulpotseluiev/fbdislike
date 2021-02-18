@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>timeline</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js" /></script>
+</head>
+<body width=1920px height=1080px style="margin:0px!important;">
+<div height=1080px style="    white-space:nowrap;
+    overflow:hidden;width:100%;">
+<div class="general" style="background: rgb(253,155,45);
+    background: linear-gradient(
+0deg
+, rgba(253,155,45,1) 0%, rgba(34,117,195,1) 100%);width:192px;height:1080px;display:inline-block;float:left;">
+<div class="timeline-container" style="height:888px;overflow:auto;">
+<div class="vertical-inner" style="width:192px;margin:34px auto;height:820px;">
+	<div class="vertical-line" style="width:5px;height:820px;margin-left:10px;background:#ffc800;display: inline-block;">
+		<div class="line-filler" style="background:#ff1800;width:5px;height:0px;">
+	<div id="c1" class="checkmark"></div>
+	<div id="c2" class="checkmark" style="margin-top:149px"></div>
+	<div id="c3" class="checkmark" style="margin-top:20px"></div>
+	<div id="c4" class="checkmark" style="margin-top:298px"></div>
+	<div id="c5" class="checkmark" style="margin-top:37px"></div>
+	<div id="c6" class="checkmark" style="margin-top:58px"></div>
+	<div id="c7" class="checkmark" style="margin-top:78px"></div>
+	<div id="c8" class="checkmark" style="margin-top:38px"></div>
+		</div>
+	</div>
+	<div class="vertical-marks" style="color: white;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: -1em;">
+	<div id="1" class="checkpoint" style="color:rgb(14 14 14)">Вход в атмосферу</div>
+	<div id="2" class="checkpoint" style="margin-top:calc(160px - 21px)">Пиковый нагрев</div>
+	<div id="3" class="checkpoint" style="margin-top:calc(20px - 21px)">Пиковое торможение</div>
+	<div id="4" class="checkpoint" style="margin-top:calc(300px - 21px)">Парашют выпущен</div>
+	<div id="5" class="checkpoint" style="margin-top:calc(40px - 21px)">Сброс щита</div>
+	<div id="6" class="checkpoint" style="margin-top:calc(60px - 21px)">Запуск радара</div>
+	<div id="7" class="checkpoint" style="margin-top:calc(80px - 21px)">Активная навигация</div>
+	<div id="8" class="checkpoint" style="margin-top:calc(40px - 21px)">Сброс скорлупы</div>
+	<div id="9" class="checkpoint" style="margin-top:calc(120px - 21px)">Касание поверхности</div>
+	</div>
+</div>
+</div>
+<div class="bottom-container" style="background: rgb(110,33,11);
+    background: linear-gradient(
+0deg
+, rgba(110,33,11,1) 0%, rgb(214 148 72) 100%);width:192px;">
+<div class="timer" style="height:32px;margin:0px auto;color:white;font-weight:bold;font-size:30px;width:90px;">T+<span id="timer">0</span>s</div>
+<div class="current-image" style="height:160px;"></div>
+</div>
+</div>
+<div class="bottomline" style="display:inline-block;height:108px;width:calc(100% - 192px);float:right;margin-top:972px;background: rgb(168 97 45);
+    background: linear-gradient( 
+0deg
+ , rgb(110 33 11) 0%, rgb(167 96 45) 100%);">
+
+</div>
+</div>
+</body>
+<script>
+jQuery(document).ready(function($){
+var totalTime = 410;
+var i = 0;
+var j = 1;
+function TimeLoop() { 
+  setTimeout(function() { 
+    $('.line-filler').css("height",i*2) 
+    i++;
+	$("#timer").html(i);
+	if([80,90,240,260,290,330,350,410].includes(i)){
+		j++;
+		console.log(j);
+		$("#"+j).css("color","rgb(14 14 14)");
+	}
+    if (i < 411) { 
+      TimeLoop(); 
+    }
+	else {
+	$(".timer").html("");
+	}
+  }, 100)
+}
+
+TimeLoop(); 
+});
+</script>
+<style>
+.checkpoint{font-weight:bold;}
+.checkmark{width:5px;height:2px;background:black;}
+</style>
+</html>
